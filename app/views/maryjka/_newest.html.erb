@@ -1,0 +1,29 @@
+<!-- Latest work -->
+<div class="work-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 work-title wow fadeIn">
+	<h2>Najnowsze albumy</h2>
+      </div>
+    </div>
+    
+    <div class="row">
+      <% @newest_albums.each do |album| %>
+      <div class="col-sm-3">
+	<div class="work wow fadeInUp">
+	  <%= link_to image_tag_with_at2x(album.logo_url, alt: album.title), album.album_url %>
+	  <h3><%= album.title %></h3>
+	  <div class="work-bottom">
+	    <%= link_to album.album_url, { :class => "big-link-2" } do %>
+	    <i class="fa fa-search"></i>
+	    <% end %>
+	    <%= link_to albums_path, { :class => "big-link-2" } do %>
+	    <i class="fa fa-link"></i>
+	    <% end %>
+	  </div>
+	</div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

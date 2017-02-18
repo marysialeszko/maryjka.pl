@@ -1,0 +1,2 @@
+module MaryjkaHelper
+end

@@ -1,0 +1,36 @@
+<!-- Page Title -->
+<div class="page-title-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 wow fadeIn">
+	<i class="fa fa-camera"></i>
+	<h1>Albumy z podróży /</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Albumy -->
+<div class="portfolio-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 portfolio-filters wow fadeInLeft">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 portfolio-masonry">
+	<% @albums.each do |album| %>
+	<div class="portfolio-box">
+	  <div class="portfolio-box-container">
+	    <%= link_to image_tag(album.logo_url, alt: album.title), album.album_url %>
+	    <div class="portfolio-box-text">
+	      <h3><%= album.title %></h3>
+	      <p><%= album.text %></p>
+	    </div>
+	  </div>
+	</div>
+	<% end %>
+      </div>
+    </div>
+  </div>	
+</div>
