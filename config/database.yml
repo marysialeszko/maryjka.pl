@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   reconnect: false
   pool: 5
@@ -14,7 +14,7 @@ default: &default
 development:
   <<: *default
   database: development
-  username: root
+  username: marysia
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
