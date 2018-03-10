@@ -1,6 +1,6 @@
 class MaryjkaController < ApplicationController
   def index
-    @newest_albums = Album.newest
+    @newest_albums = Album.newest(4)
   end
 
   def about

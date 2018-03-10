@@ -1,7 +1,7 @@
 class Album < ApplicationRecord
   validates :title, presence: true, length: { minimum: 3 }
 
-  def self.newest
-    last(4)
+  def self.newest(n)
+    order(id: :desc).limit(n)
   end
 end
