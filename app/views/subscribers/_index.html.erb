@@ -1,0 +1,17 @@
+<h4>Subskrypcja</h4>
+<div class="footer-box-text footer-box-text-subscribe">
+  <% if cookies[:saved_subscriber] %>
+    Dzięki za zapisanie się!
+  <% else %>
+    <p>Zostaw swój email, aby nie przegapić żadnych nowości.</p>
+    <%= form_for @subscriber do |f| %>
+      <div class="form-group">
+        <%= f.text_field :name, placeholder: "Imię" %>
+        <%= f.email_field :email, placeholder: "Email" %>
+      </div>
+      <%= f.button "Subskrybuj", class: "btn" %>
+    <% end %>
+    <p class="success-message"></p>
+    <p class="error-message"></p>
+  <% end %>
+</div>

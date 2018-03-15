@@ -55,32 +55,33 @@ jQuery(document).ready(function() {
 	$('.error-message').hide();
 	
 	$('.footer-box-text-subscribe form').submit(function(e) {
-		e.preventDefault();
-		
-		var form = $(this);
-	    var postdata = form.serialize();
+	  e.preventDefault();	
+	  var form = $(this);
+	  var postdata = form.serialize();
 	    
-	    $.ajax({
-	        type: 'POST',
-	        url: 'assets/subscribe.php',
-	        data: postdata,
-	        dataType: 'json',
-	        success: function(json) {
-	            if(json.valid == 0) {
-	                $('.success-message').hide();
-	                $('.error-message').hide();
-	                $('.error-message').html(json.message);
-	                $('.error-message').fadeIn();
-	            }
-	            else {
-	                $('.error-message').hide();
-	                $('.success-message').hide();
-	                form.hide();
-	                $('.success-message').html(json.message);
-	                $('.success-message').fadeIn();
-	            }
-	        }
-	    });
+	  $.ajax({
+	    type: 'POST',
+	    url: '/subscribers',
+	    data: postdata,
+	    dataType: 'json',
+	    success: function(json) {
+	      if(json.valid != 0) {
+	        $('.error-message').hide();
+	        $('.success-message').hide();
+	        form.hide();
+	        $('.success-message').html('Zapisane, dzięki!');
+		$('.success-message').addClass('violet');
+	        $('.success-message').fadeIn();
+	      }
+	    },
+	    error: function(json) {
+	      $('.success-message').hide();
+	      $('.error-message').hide();
+	      $('.error-message').html('Coś poszło nie tak, spróbuj jeszcze raz.');
+	      $('.error-message').addClass('violet');
+	      $('.error-message').fadeIn();
+	    }
+	  });
 	});
     
     /*
